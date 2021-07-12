@@ -43,6 +43,6 @@ webbrowser.register('name_whatever_you_wish',
 
 And yes you need match your spreadsheet according to your class.
 My spreadsheet was shitty so i create my own structure like this
-![](https://raw.githubusercontent.com/Limon22811/class_bot/main/image/spreadsheet.PNG?token=AOV2M6LQK3F6XDPFJTTJZZ3A5QFSK)
+![](https://github.com/Limon22811/class_bot/blob/main/image/spreadsheet.PNG)
 I use `=importrange('another-spreadsheet_url','sheet_name!A:B')`
 it will sync my original class spreadsheet to this spreadsheet if any changes were made on that spreadsheet.
