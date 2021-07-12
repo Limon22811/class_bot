@@ -9,7 +9,8 @@
 
 ### Installation:
 Listen all you gotta need is python3.9.x and python3.8 will work as well
-Make sure you run:  ```python3.x -m pip install -r requirements.txt``` or ```python3.x -m pip install gspread```
+Make sure you run:  
+```python3.x -m pip install -r requirements.txt``` or ```python3.x -m pip install gspread```
    
   
 
