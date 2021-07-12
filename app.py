@@ -73,7 +73,6 @@ def browser(link):
 
 
 day = datetime.now().isoweekday()
-x, y = [1, 2]
 colm = {8: 3, 9: 5, 10: 7, 11: 9}
 title("Class Bot by Nahian Labib Limon for S7")
 if day not in [5, 6]:
