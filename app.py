@@ -65,7 +65,7 @@ def browser(link):
     if sys.platform == 'linux' or sys.platform == 'darwin':
         path = "/usr/lib/firefox/firefox.sh"
     else:
-        path = '‪C:/Program Files/Mozilla Firefox/firefox.exe'
+        path = "C:/Program Files/Mozilla Firefox/firefox.exe"
     webbrowser.register('firefox',
                         None,
                         webbrowser.Mozilla(path))
