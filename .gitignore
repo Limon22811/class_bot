@@ -4,3 +4,5 @@ __pycache__
 *.bat
 *.pdf
 sample.py
+user_data.json
+problem.txt

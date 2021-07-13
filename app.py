@@ -2,6 +2,7 @@ from datetime import datetime
 import time
 import sys
 import os
+import json
 
 
 def clear():
@@ -9,6 +10,48 @@ def clear():
         os.system('clear')
     else:
         os.system('cls')
+
+
+def query():
+    while True:
+        clear()
+        browser_choice = input("""What type of browser will you use for opening zoom link?
+                [1] Firefox
+                [2] Chrome/Chromium Based/Microsoft Edge etc
+                [3] Opera/Opera Gx
+        ❯""").lower()
+        if browser_choice == 'firefox' or browser_choice.find('1') != -1:
+            browser_choice = 'firefox'
+            break
+        elif browser_choice == 'chrom' or browser_choice.find('2') != -1 or browser_choice.find('edge') != -1:
+            browser_choice == 'chromium'
+            break
+        elif browser_choice == 'opera' or browser_choice.find('3') != -1:
+            browser_choice == 'opera'
+            break
+        else:
+            continue
+    while True:
+        clear()
+        try:
+            browser_path = input(r"Enter your browser path❯")
+        except:
+            print("Invalid!")
+            time.sleep(2)
+        else:
+            break
+    data = {'browser_choice': browser_choice, 'browser_path': browser_path}
+    data_json = json.dumps(data)
+    with open('user_data.json', 'w') as f:
+        f.write(data_json)
+
+
+if os.path.isfile('user_data.json'):
+    with open('user_data.json', 'r') as f:
+        user_data = f.read()
+    data = json.loads(user_data)
+else:
+    query()
 
 
 def title(title):
@@ -62,11 +105,11 @@ def period_time(hour, minutes, second=0):
 def browser(link):
     import webbrowser
     if sys.platform == 'linux' or sys.platform == 'darwin':
-        path = "/usr/lib/firefox/firefox.sh"
+        path = data['browser_path']
     else:
-        path = "C:/Program Files/Mozilla Firefox/firefox.exe"
-    webbrowser.register('firefox', None, webbrowser.Mozilla(path))
-    webbrowser.get('firefox').open_new_tab(link)
+        path = data['browser_path']
+    webbrowser.register(data['browser_choice'], None, webbrowser.Mozilla(path))
+    webbrowser.get(data['browser_choice']).open_new_tab(link)
 
 
 day = datetime.now().isoweekday()
