@@ -61,15 +61,12 @@ def period_time(hour, minutes, second=0):
 
 def browser(link):
     import webbrowser
-    url = link
     if sys.platform == 'linux' or sys.platform == 'darwin':
         path = "/usr/lib/firefox/firefox.sh"
     else:
         path = "C:/Program Files/Mozilla Firefox/firefox.exe"
-    webbrowser.register('firefox',
-                        None,
-                        webbrowser.Mozilla(path))
-    webbrowser.get('firefox').open_new_tab(url)
+    webbrowser.register('firefox', None, webbrowser.Mozilla(path))
+    webbrowser.get('firefox').open_new_tab(link)
 
 
 day = datetime.now().isoweekday()
@@ -91,13 +88,15 @@ if day not in [5, 6]:
                         else:
                             while current_time() < period_time(x, 5):
                                 clear()
-                                till = period_time(x, 5) - current_time(second=True)
+                                till = period_time(x, 5) - \
+                                    current_time(second=True)
                                 print(f'Your class is starting in {till}s...')
                                 time.sleep(1)
                     else:
                         while period_time(x+1, 5) > current_time():
                             clear()
-                            till = period_time(x+1, 5) - current_time(second=True)
+                            till = period_time(x+1, 5) - \
+                                current_time(second=True)
                             print(f"""Please wait until your next class
     Your next class will start at {x+1}:05 AM.
     """)
