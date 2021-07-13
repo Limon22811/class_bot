@@ -96,11 +96,12 @@ if day not in [5, 6]:
                                 time.sleep(1)
                     else:
                         while period_time(x+1, 5) > current_time():
+                            clear()
                             till = period_time(x+1, 5) - current_time(second=True)
                             print(f"""Please wait until your next class
     Your next class will start at {x+1}:05 AM.
     """)
-                            time.sleep(till)
+                            time.sleep(1)
                 else:
                     continue
         else:
