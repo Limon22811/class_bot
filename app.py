@@ -49,8 +49,6 @@ def query():
     with open('user_data.json', 'w') as f:
         f.write(data_json)
     clear()
-    print("Configuring...")
-    time.sleep(3)
 
 
 def title(title):
