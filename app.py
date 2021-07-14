@@ -44,11 +44,20 @@ def query():
             time.sleep(2)
         else:
             break
-    data = {'browser_choice': browser_choice, 'browser_path': browser_path}
+    while True:
+        clear()
+        try:
+            class_url = input("Enter your custom class url>")
+        except:
+            print('Invalid!')
+            time.sleep(2)
+        else:
+            break
+    data = {'browser_choice': browser_choice,
+            'browser_path': browser_path, 'url': class_url}
     data_json = json.dumps(data)
     with open('user_data.json', 'w') as f:
         f.write(data_json)
-    clear()
 
 
 def title(title):
@@ -59,11 +68,13 @@ def title(title):
 
 
 def cell(data1, data2):
+    with open('user_data.json', 'r') as f:
+        user_data = f.read()
+    data = json.loads(user_data)
     import re
     import gspread
     gc = gspread.service_account(filename='credentials.json')
-    # S7 Custom Google Spreadsheet
-    sh = gc.open_by_key('1pcuMiFUVsEavYaVzshIfBHR5_juP_K_kntXN2sp-PII')
+    sh = gc.open_by_url(data['url'])
     worksheet = sh.sheet1
 
     link = worksheet.cell(data1, data2).value
