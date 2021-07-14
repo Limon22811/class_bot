@@ -17,8 +17,9 @@ def query():
         clear()
         browser_choice = input("""What type of browser will you use for opening zoom link?
                 [1] Firefox
-                [2] Chrome/Chromium Based/Microsoft Edge etc
-                [3] Opera/Opera Gx
+                [2] Chromium web browser
+                [3] Opera
+                [4] Safari/Webkit
         ❯""").lower()
         if browser_choice == 'firefox' or browser_choice.find('1') != -1:
             browser_choice = 'firefox'
@@ -28,6 +29,9 @@ def query():
             break
         elif browser_choice == 'opera' or browser_choice.find('3') != -1:
             browser_choice == 'opera'
+            break
+        elif browser_choice == 'safari' or browser_choice == 'webkit' or browser_choice.find('4'):
+            browser_choice == 'safari'
             break
         else:
             continue
@@ -44,14 +48,6 @@ def query():
     data_json = json.dumps(data)
     with open('user_data.json', 'w') as f:
         f.write(data_json)
-
-
-if os.path.isfile('user_data.json'):
-    with open('user_data.json', 'r') as f:
-        user_data = f.read()
-    data = json.loads(user_data)
-else:
-    query()
 
 
 def title(title):
@@ -104,14 +100,28 @@ def period_time(hour, minutes, second=0):
 
 def browser(link):
     import webbrowser
-    if sys.platform == 'linux' or sys.platform == 'darwin':
-        path = data['browser_path']
-    else:
-        path = data['browser_path']
-    webbrowser.register(data['browser_choice'], None, webbrowser.Mozilla(path))
+    path = data['browser_path']
+    if data['browser_choice'] == 'firefox':
+        webbrowser.register(data['browser_choice'],
+                            None, webbrowser.Mozilla(path))
+    elif data['browser_choice'] == 'chromium':
+        webbrowser.register(data['browser_choice'],
+                            None, webbrowser.Chrome(path))
+    elif data['browser_choice'] == 'opera':
+        webbrowser.register(data['browser_choice'],
+                            None, webbrowser.Opera(path))
+    elif data['browser_choice'] == 'safari':
+        webbrowser.register(data['browser_choice'],
+                            None, webbrowser.MacOSX(path))
     webbrowser.get(data['browser_choice']).open_new_tab(link)
 
 
+if os.path.isfile('user_data.json'):
+    with open('user_data.json', 'r') as f:
+        user_data = f.read()
+    data = json.loads(user_data)
+else:
+    query()
 day = datetime.now().isoweekday()
 colm = {8: 3, 9: 5, 10: 7, 11: 9}
 title("Class Bot by Nahian Labib Limon for S7")
