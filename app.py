@@ -98,6 +98,14 @@ def period_time(hour, minutes, second=0):
     return datetime(cyear, cmonth, cday, hour, minutes, second)
 
 
+if os.path.isfile('user_data.json'):
+    with open('user_data.json', 'r') as f:
+        user_data = f.read()
+    data = json.loads(user_data)
+else:
+    query()
+
+
 def browser(link):
     import webbrowser
     path = data['browser_path']
@@ -116,12 +124,6 @@ def browser(link):
     webbrowser.get(data['browser_choice']).open_new_tab(link)
 
 
-if os.path.isfile('user_data.json'):
-    with open('user_data.json', 'r') as f:
-        user_data = f.read()
-    data = json.loads(user_data)
-else:
-    query()
 day = datetime.now().isoweekday()
 colm = {8: 3, 9: 5, 10: 7, 11: 9}
 title("Class Bot by Nahian Labib Limon for S7")
