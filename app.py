@@ -48,6 +48,9 @@ def query():
     data_json = json.dumps(data)
     with open('user_data.json', 'w') as f:
         f.write(data_json)
+    clear()
+    print("Configuring...")
+    time.sleep(3)
 
 
 def title(title):
@@ -60,9 +63,8 @@ def title(title):
 def cell(data1, data2):
     import re
     import gspread
-    # credentials = nahianlabiblimon@gmail.com
     gc = gspread.service_account(filename='credentials.json')
-
+    # S7 Custom Google Spreadsheet
     sh = gc.open_by_key('1pcuMiFUVsEavYaVzshIfBHR5_juP_K_kntXN2sp-PII')
     worksheet = sh.sheet1
 
@@ -99,14 +101,15 @@ def period_time(hour, minutes, second=0):
 
 
 if os.path.isfile('user_data.json'):
-    with open('user_data.json', 'r') as f:
-        user_data = f.read()
-    data = json.loads(user_data)
+    pass
 else:
     query()
 
 
 def browser(link):
+    with open('user_data.json', 'r') as f:
+        user_data = f.read()
+    data = json.loads(user_data)
     import webbrowser
     path = data['browser_path']
     if data['browser_choice'] == 'firefox':
