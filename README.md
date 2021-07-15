@@ -1,12 +1,11 @@
 # Class Bot for ACC by Nahian Labib Limon
 
 ### Feature
-    🔵 Read google spreadsheet 1s before class
+    🔵 You don't need to copy or worry about changing link
     🔵 you can specify web browser
     🔵 support Windows, Linux & Mac
     🔵 Fast & Lite because command line application
     🔵 User friendly
-    🔵 You don't need to do anything
 
 ### Installation:
 Listen all you gotta need is python3.9.x and python3.8 will work as well
@@ -14,13 +13,28 @@ Make sure you run:  ```python3.x -m pip install -r requirements.txt``` or ```pyt
 That's it.
 ## Instruction
 Now before you jump into the program follow the below instruction its mandatory.
+##### Create your own credential.json file
+First got to [Google Cloud Platform](https://console.cloud.google.com/ "Google Cloud Platform")
+Then Select Project or Create a Project (New Porject>>Create)
+![](https://raw.githubusercontent.com/Limon22811/class_bot/main/image/Select%20Project.png)
+On the search bar search `Google Sheets API` and Enable that.
+After that you will see this screen and select credentials
+![](https://raw.githubusercontent.com/Limon22811/class_bot/main/image/credentials.png)
+Now click ont `+CREATE CREDENTIALS` and select `Service Account` 
+Enter Service Account name and click done.
+Now select Manage Service Account ![](https://raw.githubusercontent.com/Limon22811/class_bot/main/image/manage.png)
+And click on the three dot and select manage keys ![](https://raw.githubusercontent.com/Limon22811/class_bot/main/image/manage%20key.png)
+select `ADD KEY` and Select `Create new key` and select JSON
+that json file will be downloaded now rename it to `credentials.json` make sure that app.py and credentials file are in the same directory.
 ##### Spreadsheet Setup
     
 And yes you need match your spreadsheet according to my one.
 Here is the sample:
-![](https://github.com/Limon22811/class_bot/blob/main/image/spreadsheet.PNG)
-I use `=importrange('another-spreadsheet_url','sheet_name!A:B')` to my spreadsheet
-it will sync th original class spreadsheet to my spreadsheet.
+![](https://raw.githubusercontent.com/Limon22811/class_bot/main/image/spreadsheet.PNG)
+I use `=importrange('your_class_sheet_url','sheet_name!A:B')` to my spreadsheet
+it will sync the original class spreadsheet to your spreadsheet. If your class sheet make any change then your own class sheet will made that change as well.
+Now go ahead open `credentials.json` file with any text editor and copy the client_email
+and click share your own spreadsheet and give viewer or editor access.
 
 ##### Browser Preferrence
 If you are running this script or command line application for the first time it will ask you to choose what type of
