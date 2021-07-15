@@ -6,3 +6,6 @@
     🔵 support Windows, Linux & Mac
     🔵 Fast & Lite because command line application
     🔵 User friendly
+
+
+All Instruction are provided in [Wiki](https://github.com/Limon22811/class_bot/wiki "Class Bot Wiki")
