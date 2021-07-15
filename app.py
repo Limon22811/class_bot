@@ -20,7 +20,7 @@ def query():
                 [2] Chromium web browser
                 [3] Opera
                 [4] Safari/Webkit
-        ❯""").lower()
+        >""").lower()
         if browser_choice == 'firefox' or browser_choice.find('1') != -1:
             browser_choice = 'firefox'
             break
@@ -38,7 +38,7 @@ def query():
     while True:
         clear()
         try:
-            browser_path = input(r"Enter your browser path❯")
+            browser_path = input(r"Enter your browser path>")
         except:
             print("Invalid!")
             time.sleep(2)
@@ -138,7 +138,7 @@ def browser(link):
 
 day = datetime.now().isoweekday()
 colm = {8: 3, 9: 5, 10: 7, 11: 9}
-title("Class Bot by Nahian Labib Limon for S7")
+title("Class Bot by Nahian Labib Limon for ACC")
 if day not in [5, 6]:
     while period_time(7, 0) <= current_time() <= period_time(11, 35):
         if period_time(8, 5) <= current_time() <= period_time(11, 35):
