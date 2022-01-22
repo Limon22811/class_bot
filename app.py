@@ -21,17 +21,17 @@ def query():
                 [3] Opera
                 [4] Safari/Webkit
         >""").lower()
-        if browser_choice == 'firefox' or browser_choice.find('1') != -1:
+        if bc == 'firefox' or bc.find('1') != -1:
             browser_choice = 'firefox'
             break
-        elif browser_choice == 'chrom' or browser_choice.find('2') != -1 or browser_choice.find('edge') != -1:
-            browser_choice == 'chromium'
+        elif bc == 'chrom' or bc.find('2') != -1 or bc.find('edge') != -1:
+            browser_choice = 'chromium'
             break
-        elif browser_choice == 'opera' or browser_choice.find('3') != -1:
-            browser_choice == 'opera'
+        elif bc == 'opera' or bc.find('3') != -1:
+            browser_choice = 'opera'
             break
-        elif browser_choice == 'safari' or browser_choice == 'webkit' or browser_choice.find('4'):
-            browser_choice == 'safari'
+        elif bc == 'safari' or bc == 'webkit' or cb.find('4'):
+            browser_choice = 'safari'
             break
         else:
             continue
