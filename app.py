@@ -136,46 +136,55 @@ def browser(link):
     webbrowser.get(data['browser_choice']).open_new_tab(link)
 
 
+title('Class Bot For ACC S7')
 day = datetime.now().isoweekday()
-colm = {8: 3, 9: 5, 10: 7, 11: 9}
-title("Class Bot by Nahian Labib Limon for ACC")
 if day not in [5, 6]:
-    while period_time(7, 0) <= current_time() <= period_time(11, 35):
-        if period_time(8, 5) <= current_time() <= period_time(11, 35):
-            for x in range(8, 12):
-                if period_time(x, 0) <= current_time() <= period_time(x, 59):
-                    if period_time(x, 0) <= current_time() <= period_time(x, 35):
-                        if period_time(x, 5) <= current_time():
-                            clear()
-                            print(f"""Current Class: {cell(day, colm[x]-1)}
-    Next Class: {cell(day, colm[x]+1)}""")
-                            browser(cell(day, colm[x]))
-                            till = (60 - current_time().minute) * 60
-                            time.sleep(till)
-                        else:
-                            while current_time() < period_time(x, 5):
-                                clear()
-                                till = period_time(x, 5) - \
-                                    current_time(second=True)
-                                print(f'Your class is starting in {till}s...')
-                                time.sleep(1)
-                    else:
-                        while period_time(x+1, 5) > current_time():
-                            clear()
-                            till = period_time(x+1, 5) - \
-                                current_time(second=True)
-                            print(f"""Please wait until your next class
-    Your next class will start at {x+1}:05 AM.
-    """)
-                            time.sleep(1)
-                else:
-                    continue
-        else:
-            while current_time() < period_time(8, 5):
-                clear()
-                till = period_time(8, 5) - current_time(second=True)
-                print(f'Your class is starting in {till}s...')
-                time.sleep(1)
+    while period_time(8, 0) <= current_time() <= period_time(11, 20):
+        if period_time(8, 50) < current_time() < period_time(9, 25):
+            clear()
+            colm = 3
+            title(f'Class Bot For ACC S7 | {cell(day,2)}')
+            print(f"""Current Class: {cell(day,2)}
+Next Class: {cell(day, 4)}""")
+            browser(cell(day, colm))
+            till = period_time(9, 25) - current_time()
+            hour, minute, second = str(till).split(':')
+            time.sleep(int(minute)*60 + int(second))
+        elif period_time(9, 35) < current_time() < period_time(10, 10):
+            clear()
+            title(f'Class Bot For ACC S7 | {cell(day,4)}')
+            colm = 5
+            print(f"""Current Class: {cell(day,4)}
+Next Class: {cell(day, 6)}""")
+            browser(cell(day, colm))
+            till = period_time(10, 10) - current_time()
+            hour, minute, second = str(till).split(':')
+            time.sleep(int(minute)*60 + int(second))
+        elif period_time(10, 20) < current_time() < period_time(10, 55):
+            title(f'Class Bot For ACC S7 | {cell(day,6)}')
+            clear()
+            colm = 7
+            print(f"""Current Class: {cell(day,6)}
+Next Class: {cell(day, 8)}""")
+            browser(cell(day, colm))
+            till = period_time(10, 55) - current_time()
+            hour, minute, second = str(till).split(':')
+            time.sleep(int(minute)*60 + int(second))
+        elif period_time(11, 5) < current_time() < period_time(11, 40):
+            clear()
+            if day == 4:
+                title(f'Class Bot For ACC S7 | Class Finished')
+                print("Your College class has finished!")
+                sys.exit()
+            else:
+                title(f'Class Bot For ACC S7 | {cell(day,8)}')
+                colm = 9
+                print(f"""Current Class: {cell(day,8)}
+Next Class: {cell(day, 10)}""")
+                browser(cell(day, colm))
+                till = period_time(11, 40) - current_time()
+                hour, minute, second = str(till).split(':')
+                time.sleep(int(minute)*60 + int(second))
     else:
         clock = datetime.today().strftime("%I:%M %p")
         print(f"There is no class at {clock}")
